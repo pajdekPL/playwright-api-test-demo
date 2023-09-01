@@ -27,7 +27,8 @@
   expect(body.three.five[0].six).toEqual([]);
   expect(body.three.five[1].seven).toBe(null);
 */
-export async function createAssertions(object: object, paramName = "body"): Promise<void> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function createAssertions(object: Record<string, any>, paramName = "body"): Promise<void> {
   for (const key in object) {
     const value = object[key];
 

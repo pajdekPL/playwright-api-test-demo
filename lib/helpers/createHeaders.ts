@@ -1,4 +1,4 @@
-import { createCookies } from "../datafactory/auth";
+import { createCookies } from "@datafactory/auth";
 import Env from "@helpers/env";
 
 const username = Env.ADMIN_NAME;
@@ -18,8 +18,12 @@ const password = Env.ADMIN_PASSWORD;
     });
  * 
  */
-export async function createHeaders(token?) {
-  let requestHeaders;
+interface RequestHeaders {
+  cookie: string;
+}
+
+export async function createHeaders(token?: string): Promise<RequestHeaders> {
+  let requestHeaders: RequestHeaders;
 
   if (token) {
     requestHeaders = {
